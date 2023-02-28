@@ -15,11 +15,11 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import com.bit.bookclub.board.domain.Article;
-import com.bit.bookclub.board.domain.UserAccount;
-import com.bit.bookclub.board.repository.ArticleRepository;
-import com.bit.bookclub.board.repository.Article_CommentRepository;
-import com.bit.bookclub.board.repository.UserAccountRepository;
+import com.bit.bookclub.domain.Article;
+import com.bit.bookclub.domain.UserAccount;
+import com.bit.bookclub.repository.ArticleRepository;
+import com.bit.bookclub.repository.Article_CommentRepository;
+import com.bit.bookclub.repository.UserAccountRepository;
 
 // @ActiveProfiles("testdb") --> application.yaml 파일에서 설정 후 사용 
 @DisplayName("JPA 연결 테스트")

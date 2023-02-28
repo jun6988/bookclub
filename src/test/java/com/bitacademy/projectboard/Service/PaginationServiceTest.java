@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.bit.bookclub.board.Service.PaginationService;
+import com.bit.bookclub.Service.PaginationService;
 
 @DisplayName("비즈니스 로직 - 페이지네이션")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = PaginationService.class)

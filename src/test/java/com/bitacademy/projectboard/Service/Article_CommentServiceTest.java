@@ -19,15 +19,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.bit.bookclub.board.Service.Article_CommentService;
-import com.bit.bookclub.board.domain.Article;
-import com.bit.bookclub.board.domain.Article_Comment;
-import com.bit.bookclub.board.domain.UserAccount;
-import com.bit.bookclub.board.dto.Article_CommentDto;
-import com.bit.bookclub.board.dto.UserAccountDto;
-import com.bit.bookclub.board.repository.ArticleRepository;
-import com.bit.bookclub.board.repository.Article_CommentRepository;
-import com.bit.bookclub.board.repository.UserAccountRepository;
+import com.bit.bookclub.Service.Article_CommentService;
+import com.bit.bookclub.domain.Article;
+import com.bit.bookclub.domain.Article_Comment;
+import com.bit.bookclub.domain.UserAccount;
+import com.bit.bookclub.dto.Article_CommentDto;
+import com.bit.bookclub.dto.UserAccountDto;
+import com.bit.bookclub.repository.ArticleRepository;
+import com.bit.bookclub.repository.Article_CommentRepository;
+import com.bit.bookclub.repository.UserAccountRepository;
 
 @DisplayName("비즈니스 로직 - 댓글")
 @ExtendWith(MockitoExtension.class)

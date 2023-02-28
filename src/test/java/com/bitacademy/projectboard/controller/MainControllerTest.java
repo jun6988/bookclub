@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
-import com.bit.bookclub.board.controller.MainController;
+import com.bit.bookclub.controller.MainController;
 
 @Import(SecurityConfig.class)
 @WebMvcTest(MainController.class)

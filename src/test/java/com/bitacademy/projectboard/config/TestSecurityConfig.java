@@ -8,9 +8,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.event.annotation.BeforeTestMethod;
 
-import com.bit.bookclub.board.config.SecurityConfig;
-import com.bit.bookclub.board.domain.UserAccount;
-import com.bit.bookclub.board.repository.UserAccountRepository;
+import com.bit.bookclub.config.SecurityConfig;
+import com.bit.bookclub.domain.UserAccount;
+import com.bit.bookclub.repository.UserAccountRepository;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;

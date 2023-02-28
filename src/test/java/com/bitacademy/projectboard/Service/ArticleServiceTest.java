@@ -23,15 +23,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import com.bit.bookclub.board.Service.ArticleService;
-import com.bit.bookclub.board.domain.Article;
-import com.bit.bookclub.board.domain.UserAccount;
-import com.bit.bookclub.board.domain.constant.SearchType;
-import com.bit.bookclub.board.dto.ArticleDto;
-import com.bit.bookclub.board.dto.ArticleWithCommentsDto;
-import com.bit.bookclub.board.dto.UserAccountDto;
-import com.bit.bookclub.board.repository.ArticleRepository;
-import com.bit.bookclub.board.repository.UserAccountRepository;
+import com.bit.bookclub.Service.ArticleService;
+import com.bit.bookclub.domain.Article;
+import com.bit.bookclub.domain.UserAccount;
+import com.bit.bookclub.domain.constant.SearchType;
+import com.bit.bookclub.dto.ArticleDto;
+import com.bit.bookclub.dto.ArticleWithCommentsDto;
+import com.bit.bookclub.dto.UserAccountDto;
+import com.bit.bookclub.repository.ArticleRepository;
+import com.bit.bookclub.repository.UserAccountRepository;
 
 // Test에서 만들어주고 method 만들면 Service에서 생성된다. 
 @DisplayName("비즈니스 로직 - 게시글")
