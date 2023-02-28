@@ -8,6 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 @SpringBootApplication
 public class BitacademyProjectBoardApplication {
 
+	// 
 	public static void main(String[] args) {
 		SpringApplication.run(BitacademyProjectBoardApplication.class, args);
 	}
