@@ -8,8 +8,8 @@ import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.data.querydsl.binding.QuerydslBindings;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import com.bit.board.domain.QArticle_Comment;
 import com.bit.bookclub.domain.Article_Comment;
-import com.bitacademy.projectboard.domain.QArticle_Comment;
 import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 

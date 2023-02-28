@@ -8,9 +8,9 @@ import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.data.querydsl.binding.QuerydslBindings;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import com.bit.board.domain.QArticle;
 import com.bit.bookclub.domain.Article;
 import com.bit.bookclub.repository.querydsl.ArticleRepositoryCustom;
-import com.bitacademy.projectboard.domain.QArticle;
 import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 
