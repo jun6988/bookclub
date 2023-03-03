@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 import com.bit.bookclub.modules.account.domain.UserAccount;
 import com.bit.bookclub.modules.account.domain.entity.Account;
-import com.bit.bookclub.modules.event.form.EventForm;
+import com.bit.bookclub.modules.event.endpoint.form.EventForm;
 import com.bit.bookclub.modules.study.domain.entity.Study;
 
 import java.time.LocalDateTime;

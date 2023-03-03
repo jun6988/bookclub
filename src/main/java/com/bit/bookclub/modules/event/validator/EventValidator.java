@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.bit.bookclub.modules.event.domain.entity.Event;
-import com.bit.bookclub.modules.event.form.EventForm;
+import com.bit.bookclub.modules.event.endpoint.form.EventForm;
 
 import java.time.LocalDateTime;
 

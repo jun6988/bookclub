@@ -13,13 +13,13 @@ import com.bit.bookclub.infra.config.AppProperties;
 import com.bit.bookclub.infra.mail.EmailMessage;
 import com.bit.bookclub.infra.mail.EmailService;
 import com.bit.bookclub.modules.account.domain.entity.Account;
-import com.bit.bookclub.modules.account.predicates.AccountPredicates;
-import com.bit.bookclub.modules.account.repository.AccountRepository;
+import com.bit.bookclub.modules.account.infra.predicates.AccountPredicates;
+import com.bit.bookclub.modules.account.infra.repository.AccountRepository;
 import com.bit.bookclub.modules.notification.domain.entity.Notification;
 import com.bit.bookclub.modules.notification.domain.entity.NotificationType;
-import com.bit.bookclub.modules.notification.repository.NotificationRepository;
+import com.bit.bookclub.modules.notification.infra.repository.NotificationRepository;
 import com.bit.bookclub.modules.study.domain.entity.Study;
-import com.bit.bookclub.modules.study.repository.StudyRepository;
+import com.bit.bookclub.modules.study.infra.repository.StudyRepository;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

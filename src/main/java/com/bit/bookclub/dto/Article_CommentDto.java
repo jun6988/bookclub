@@ -4,25 +4,15 @@ import java.time.LocalDateTime;
 
 import com.bit.bookclub.domain.Article;
 import com.bit.bookclub.domain.Article_Comment;
-import com.bit.bookclub.domain.UserAccount;
+import com.bit.bookclub.modules.account.domain.entity.Account;
 
-//public record Article_CommentDto (
-//		LocalDateTime createdAt,
-//		String createdBy,
-//		LocalDateTime modifiedAt,
-//		String modifiedBy,
-//		String content
-//) {
-//	public static Article_CommentDto of(LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy, String content) {
-//		return new Article_CommentDto(createdAt, createdBy, modifiedAt, modifiedBy, content);
-//	}
-//
-//}
+
+
 
 public record Article_CommentDto(
         Long id,
         Long articleId,
-        UserAccountDto userAccountDto,
+        AccountDto accountDto,
         String content,
         LocalDateTime createdAt,
         String createdBy,
@@ -30,18 +20,18 @@ public record Article_CommentDto(
         String modifiedBy
 ) {
 
-    public static Article_CommentDto of(Long articleId, UserAccountDto userAccountDto, String content) {
-        return new Article_CommentDto(null, articleId, userAccountDto, content, null, null, null, null);
+    public static Article_CommentDto of(Long articleId, AccountDto accountDto, String content) {
+        return new Article_CommentDto(null, articleId, accountDto, content, null, null, null, null);
     }
-    public static Article_CommentDto of(Long id, Long articleId, UserAccountDto userAccountDto, String content, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
-        return new Article_CommentDto(id, articleId, userAccountDto, content, createdAt, createdBy, modifiedAt, modifiedBy);
+    public static Article_CommentDto of(Long id, Long articleId, AccountDto accountDto, String content, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
+        return new Article_CommentDto(id, articleId, accountDto, content, createdAt, createdBy, modifiedAt, modifiedBy);
     }
 
     public static Article_CommentDto from(Article_Comment entity) {
         return new Article_CommentDto(
                 entity.getId(),
                 entity.getArticle().getId(),
-                UserAccountDto.from(entity.getUserAccount()),
+                AccountDto.from(entity.getAccount()),
                 entity.getContent(),
                 entity.getCreatedAt(),
                 entity.getCreatedBy(),
@@ -50,10 +40,10 @@ public record Article_CommentDto(
         );
     }
 
-    public Article_Comment toEntity(Article article, UserAccount userAccount) {
+    public Article_Comment toEntity(Article article, Account account) {
         return Article_Comment.of(
                 article,
-                userAccount,
+                account,
                 content
         );
     }

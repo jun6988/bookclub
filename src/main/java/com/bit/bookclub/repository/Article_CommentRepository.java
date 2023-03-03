@@ -8,8 +8,8 @@ import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.data.querydsl.binding.QuerydslBindings;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.bit.board.domain.QArticle_Comment;
 import com.bit.bookclub.domain.Article_Comment;
+import com.bit.bookclub.domain.QArticle_Comment;
 import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 
@@ -19,8 +19,10 @@ public interface Article_CommentRepository extends
         QuerydslPredicateExecutor<Article_Comment>,
         QuerydslBinderCustomizer<QArticle_Comment> {
 
-    List<Article_Comment> findByArticle_Id(Long articleId);
-    void deleteByIdAndUserAccount_UserId(Long article_CommentId, String userId);
+    // 게시글 id를 통해 게시글id에 해당하는 댓글 리스트를 뽑는다 
+    // 댓글 요소로 검색하는 것이 아닌 게시글로 댓글 검색 
+    List<Article_Comment> findByArticle_Id(Long articleId); 
+    void deleteByIdAndAccount_Nickname(Long article_CommentId, String nickname);
 
     @Override
     default void customize(QuerydslBindings bindings, QArticle_Comment root) {

@@ -1,10 +1,7 @@
 package com.bit.bookclub.domain;
 
-import java.util.LinkedHashSet;
 import java.util.Objects;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,9 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
+import com.bit.bookclub.modules.account.domain.entity.Account;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -41,21 +38,21 @@ public class Article_Comment extends AuditingFields {
 
     // @ManyToOne = 연관관계 Mapping 
     @Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; // 유저 정보 (ID)
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "nickname") private Account account; // 유저 정보 (ID)
 
     @Setter @Column(nullable = false, length = 500) private String content; // 본문
 
 
     protected Article_Comment() {}
 
-    private Article_Comment(Article article, UserAccount userAccount, String content) {
+    private Article_Comment(Article article, Account account, String content) {
         this.article = article;
-        this.userAccount = userAccount;
+        this.account = account;
         this.content = content;
     }
 
-    public static Article_Comment of(Article article, UserAccount userAccount, String content) {
-        return new Article_Comment(article, userAccount, content);
+    public static Article_Comment of(Article article, Account account, String content) {
+        return new Article_Comment(article, account, content);
     }
 
     @Override

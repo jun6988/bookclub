@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import com.bit.bookclub.modules.account.domain.entity.Account;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -40,7 +42,7 @@ public class Article extends AuditingFields { // AuditingFields 상속으로 내
 
     // @Setter = 도메인에서 수정 가능하도록. 자동으로 바꿔주는 것을 방지.
     // meta data는 JPA가 자동으로 변경 가능하도록 해야하기 때문에 걸어주지 않는다. --> meta data는 JpaConfig로 이동.
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; // 유저 정보 (ID)
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private Account account; // 유저 정보 (ID)
 
     // @Column(nullable = false, length = 10000) - not null 및 길이 설정.
     @Setter @Column(nullable = false) private String title; // 제목
@@ -62,16 +64,16 @@ public class Article extends AuditingFields { // AuditingFields 상속으로 내
     // 도메인과 관련있는 것만 open
     protected Article() {}
 
-    private Article(UserAccount userAccount, String title, String content, String hashtag) {
-        this.userAccount = userAccount;
+    private Article(Account account, String title, String content, String hashtag) {
+        this.account = account;
         this.title = title;
         this.content = content;
         this.hashtag = hashtag;
     }
 
     // 도메인 article을 생성할 때 어떤 정보가 필요한지 guide
-    public static Article of(UserAccount userAccount, String title, String content, String hashtag) {
-        return new Article(userAccount, title, content, hashtag);
+    public static Article of(Account account, String title, String content, String hashtag) {
+        return new Article(account, title, content, hashtag);
     }
 
     // 동등성 검사 

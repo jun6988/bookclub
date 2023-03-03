@@ -1,30 +1,30 @@
 package com.bit.bookclub.dto.security;
 
-import lombok.Getter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import com.bit.bookclub.dto.UserAccountDto;
-
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.bit.bookclub.dto.AccountDto;
+
+import lombok.Getter;
+
 public record BoardPrincipal(
-        String username,
+        String name,
         String password,
         Collection<? extends GrantedAuthority> authorities,
         String email,
-        String nickname,
-        String memo
+        String nickname
 ) implements UserDetails {
 
-    public static BoardPrincipal of(String username, String password, String email, String nickname, String memo) {
+    public static BoardPrincipal of(String name, String password, String email, String nickname) {
         Set<RoleType> roleTypes = Set.of(RoleType.USER);
 
         return new BoardPrincipal(
-                username,
+                name,
                 password,
                 roleTypes.stream()
                         .map(RoleType::getName)
@@ -32,33 +32,30 @@ public record BoardPrincipal(
                         .collect(Collectors.toUnmodifiableSet())
                 ,
                 email,
-                nickname,
-                memo
+                nickname
+
         );
     }
 
-    public static BoardPrincipal from(UserAccountDto dto) {
+    public static BoardPrincipal from(AccountDto dto) {
         return BoardPrincipal.of(
-                dto.userId(),
-                dto.userPassword(),
+                dto.name(),
+                dto.password(),
                 dto.email(),
-                dto.nickname(),
-                dto.memo()
+                dto.nickname()
         );
     }
 
-    public UserAccountDto toDto() {
-        return UserAccountDto.of(
-                username,
+    public AccountDto toDto() {
+        return AccountDto.of(
+                name,
                 password,
-                email,
-                nickname,
-                memo
+                email
         );
     }
 
 
-    @Override public String getUsername() { return username; }
+    public String getName() { return name; }
     @Override public String getPassword() { return password; }
     @Override public Collection<? extends GrantedAuthority> getAuthorities() { return authorities; }
 
@@ -66,6 +63,12 @@ public record BoardPrincipal(
     @Override public boolean isAccountNonLocked() { return true; }
     @Override public boolean isCredentialsNonExpired() { return true; }
     @Override public boolean isEnabled() { return true; }
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
     public enum RoleType {

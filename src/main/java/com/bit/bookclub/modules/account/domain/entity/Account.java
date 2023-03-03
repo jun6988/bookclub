@@ -21,7 +21,7 @@ import javax.persistence.PostLoad;
 
 import org.hibernate.Hibernate;
 
-import com.bit.bookclub.modules.account.form.NotificationForm;
+import com.bit.bookclub.modules.account.endpoint.controller.form.NotificationForm;
 import com.bit.bookclub.modules.tag.domain.entity.Tag;
 
 import lombok.AccessLevel;
@@ -37,7 +37,7 @@ import lombok.ToString;
 public class Account extends AuditingEntity {
 
     @Id @GeneratedValue
-    @Column(name = "user")
+    @Column(name = "account_id")
     private Long id;
 
     @Column(unique = true)
@@ -46,7 +46,7 @@ public class Account extends AuditingEntity {
     @Column(unique = true)
     private String nickname;
     
-   // private String name;
+    private String name;
 
     private String password;
 
@@ -60,6 +60,8 @@ public class Account extends AuditingEntity {
     
     @Column(nullable = false)
     private String gender;
+    
+    private Integer age;
     
     	
 
@@ -108,7 +110,7 @@ public class Account extends AuditingEntity {
         }
     }
 
-    public void updateProfile(com.bit.bookclub.modules.account.form.Profile profile) {
+    public void updateProfile(com.bit.bookclub.modules.account.endpoint.controller.form.Profile profile) {
         if (this.profile == null) {
             this.profile = new Profile();
         }
@@ -182,5 +184,16 @@ public class Account extends AuditingEntity {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+    
+    // june
+    private Account(String nickname, String password, String email) {
+    	this.nickname = nickname;
+    	this.password = password;
+    	this.email = email;
+    }
+    
+    public static Account of(String nickname, String password, String email) {
+    	return new Account(nickname, password, email);
     }
 }

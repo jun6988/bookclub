@@ -24,8 +24,8 @@ import org.hibernate.annotations.ColumnDefault;
 import com.bit.bookclub.modules.account.domain.UserAccount;
 import com.bit.bookclub.modules.account.domain.entity.Account;
 import com.bit.bookclub.modules.account.domain.entity.Zone;
-import com.bit.bookclub.modules.study.form.StudyDescriptionForm;
-import com.bit.bookclub.modules.study.form.StudyForm;
+import com.bit.bookclub.modules.study.endpoint.form.StudyDescriptionForm;
+import com.bit.bookclub.modules.study.endpoint.form.StudyForm;
 import com.bit.bookclub.modules.tag.domain.entity.Tag;
 
 @Entity

@@ -1,7 +1,6 @@
 package com.bit.bookclub.dto.Response;
 
 import java.time.LocalDateTime;
-import java.util.stream.Collectors;
 
 import com.bit.bookclub.dto.ArticleDto;
 
@@ -20,19 +19,17 @@ public record ArticleResponse(
     }
 
     public static ArticleResponse from(ArticleDto dto) {
-        String nickname = dto.userAccountDto().nickname();
-        if (nickname == null || nickname.isBlank()) {
-            nickname = dto.userAccountDto().userId();
-        }
-
+    	// 작성자 보여주는 것 (nickname 없으면 id) 
+        String nickname = dto.accountDto().nickname();
+       
         return new ArticleResponse(
                 dto.id(),
                 dto.title(),
                 dto.content(),
                 dto.hashtag(),
                 dto.createdAt(),
-                dto.userAccountDto().email(),
-                nickname
+                dto.accountDto().email(),
+                dto.accountDto().nickname()
         );
     }
 

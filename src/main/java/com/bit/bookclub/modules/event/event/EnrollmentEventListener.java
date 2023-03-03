@@ -17,7 +17,7 @@ import com.bit.bookclub.modules.event.domain.entity.Enrollment;
 import com.bit.bookclub.modules.event.domain.entity.Event;
 import com.bit.bookclub.modules.notification.domain.entity.Notification;
 import com.bit.bookclub.modules.notification.domain.entity.NotificationType;
-import com.bit.bookclub.modules.notification.repository.NotificationRepository;
+import com.bit.bookclub.modules.notification.infra.repository.NotificationRepository;
 import com.bit.bookclub.modules.study.domain.entity.Study;
 
 import java.time.LocalDateTime;

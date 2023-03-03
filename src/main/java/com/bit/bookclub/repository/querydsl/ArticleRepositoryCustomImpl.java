@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
-import com.bit.board.domain.QArticle;
 import com.bit.bookclub.domain.Article;
-import com.querydsl.jpa.JPQLQuery;
+import com.bit.bookclub.domain.QArticle;
 
 public class ArticleRepositoryCustomImpl extends QuerydslRepositorySupport implements ArticleRepositoryCustom {
 	

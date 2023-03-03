@@ -1,5 +1,7 @@
 package com.bit.bookclub.config;
 
+import java.util.Optional;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
@@ -10,7 +12,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.bit.bookclub.dto.security.BoardPrincipal;
 
-import java.util.Optional;
 
 @EnableJpaAuditing
 @Configuration
@@ -26,7 +27,7 @@ public class JpaConfig {
                 .filter(Authentication::isAuthenticated)
                 .map(Authentication::getPrincipal)
                 .map(BoardPrincipal.class::cast)
-                .map(BoardPrincipal::getUsername);
+                .map(BoardPrincipal::getName);
     }
 
 }

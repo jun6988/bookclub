@@ -9,7 +9,7 @@ import com.bit.bookclub.domain.Article;
 
 public record ArticleWithCommentsDto(
         Long id,
-        UserAccountDto userAccountDto,
+        AccountDto accountDto,
         Set<Article_CommentDto> article_CommentDtos,
         String title,
         String content,
@@ -19,14 +19,14 @@ public record ArticleWithCommentsDto(
         LocalDateTime modifiedAt,
         String modifiedBy
 ) {
-    public static ArticleWithCommentsDto of(Long id, UserAccountDto userAccountDto, Set<Article_CommentDto> article_CommentDtos, String title, String content, String hashtag, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
-        return new ArticleWithCommentsDto(id, userAccountDto, article_CommentDtos, title, content, hashtag, createdAt, createdBy, modifiedAt, modifiedBy);
+    public static ArticleWithCommentsDto of(Long id, AccountDto accountDto, Set<Article_CommentDto> article_CommentDtos, String title, String content, String hashtag, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
+        return new ArticleWithCommentsDto(id, accountDto, article_CommentDtos, title, content, hashtag, createdAt, createdBy, modifiedAt, modifiedBy);
     }
 
     public static ArticleWithCommentsDto from(Article entity) {
         return new ArticleWithCommentsDto(
                 entity.getId(),
-                UserAccountDto.from(entity.getUserAccount()),
+                AccountDto.from(entity.getAccount()),
                 entity.getArticle_Comments().stream()
                         .map(Article_CommentDto::from)
                         .collect(Collectors.toCollection(LinkedHashSet::new)),

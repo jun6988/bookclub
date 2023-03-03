@@ -10,15 +10,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-
-import com.bit.bookclub.dto.UserAccountDto;
-import com.bit.bookclub.dto.security.BoardPrincipal;
-import com.bit.bookclub.repository.UserAccountRepository;
 
 import javax.sql.DataSource;
 
@@ -36,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/email-login", "/check-email-login", "/login-link", "/login-by-email", "/search/study").permitAll()
         .mvcMatchers("/json", "/json-login", "/json-sign-up", "/json-check-email-token",
                 "/json-email-login", "/json-check-email-login", "/json-login-link", "/json-login-by-email", "/search/json-study").permitAll()
-        .mvcMatchers(HttpMethod.GET, "/profile/*", "/", "/articles",  "/articles/search-hashtag" ).permitAll()
+        .mvcMatchers(HttpMethod.GET, "/profile/*").permitAll()
         .anyRequest().authenticated();
         http.formLogin()
                 .loginPage("/login")
@@ -62,21 +55,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/node_modules/**");
     }
 }
-
-
-
-
-//@Bean
-//public UserDetailsService userDetailsService(UserAccountRepository userAccountRepository) {
-//    return username -> userAccountRepository
-//            .findById(username)
-//            .map(UserAccountDto::from)
-//            .map(BoardPrincipal::from)
-//            .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다 - username: " + username));
-//}
-//
-//@Bean
-//public PasswordEncoder passwordEncoder() {
-//    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//}
-

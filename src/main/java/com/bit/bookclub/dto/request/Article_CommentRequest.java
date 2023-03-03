@@ -1,7 +1,7 @@
 package com.bit.bookclub.dto.request;
 
+import com.bit.bookclub.dto.AccountDto;
 import com.bit.bookclub.dto.Article_CommentDto;
-import com.bit.bookclub.dto.UserAccountDto;
 
 public record Article_CommentRequest(Long articleId, String content) {
 
@@ -9,10 +9,10 @@ public record Article_CommentRequest(Long articleId, String content) {
         return new Article_CommentRequest(articleId, content);
     }
 
-    public Article_CommentDto toDto(UserAccountDto userAccountDto) {
+    public Article_CommentDto toDto(AccountDto accountDto) {
         return Article_CommentDto.of(
                 articleId,
-                userAccountDto,
+                accountDto,
                 content
         );
     }

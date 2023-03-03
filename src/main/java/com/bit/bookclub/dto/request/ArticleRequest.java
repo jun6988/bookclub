@@ -1,9 +1,7 @@
 package com.bit.bookclub.dto.request;
 
-import java.util.Set;
-
+import com.bit.bookclub.dto.AccountDto;
 import com.bit.bookclub.dto.ArticleDto;
-import com.bit.bookclub.dto.UserAccountDto;
 
 public record ArticleRequest(
         String title,
@@ -15,9 +13,9 @@ public record ArticleRequest(
         return new ArticleRequest(title, content, hashtag);
     }
 
-    public ArticleDto toDto(UserAccountDto userAccountDto) {
+    public ArticleDto toDto(AccountDto accountDto) {
         return ArticleDto.of(
-                userAccountDto,
+                accountDto,
                 title,
                 content,
                 hashtag

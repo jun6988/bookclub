@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.bit.bookclub.modules.notification.interceptor.NotificationInterceptor;
+import com.bit.bookclub.modules.notification.infra.interceptor.NotificationInterceptor;
 
 import java.util.List;
 import java.util.stream.Collectors;
