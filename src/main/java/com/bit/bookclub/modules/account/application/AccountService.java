@@ -1,7 +1,9 @@
 package com.bit.bookclub.modules.account.application;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,9 +28,8 @@ import com.bit.bookclub.modules.account.endpoint.controller.form.SignUpForm;
 import com.bit.bookclub.modules.account.infra.repository.AccountRepository;
 import com.bit.bookclub.modules.tag.domain.entity.Tag;
 
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor

@@ -1,6 +1,7 @@
 package com.bit.bookclub.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
@@ -12,6 +13,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -21,6 +23,8 @@ import lombok.ToString;
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass // AuditingFields 자체가 entity가 될 수 없고 무조건 상속을 받아야함으로 abstract
 public abstract class AuditingFields {
+
+
 
 	//Meta Data
 	// setter x = 자동으로 JPA가 setting하도록 해야함 / 임의로 수정 불가 하도록 한다 
