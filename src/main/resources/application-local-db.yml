@@ -1,26 +1,23 @@
-debug: false
+debug: true
+management.endpoints.web.exposure.include: "*"
 
 spring:
   datasource:
-    username: june
-    password: Ipoi1201?
-    url: jdbc:mysql://localhost:3307/board
-    driver-class-name: org.mysql.cj.jdbc.Driver
+    username: bookclub
+    password: bookclub
+    url: jdbc:mysql://localhost:3307/bookclub
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
- # mail:
- #   host: smtp.gmail.com
- #   port: 587
- #   username: account-created
- #   password: app-password-issued
- #   properties:
- #     mail.smtp.auth: true
- #     mail.smtp.timeout: 5000
- #     mail.smtp.starttls.enable: true
+        default_batch_fetch_size: 100
+    open-in-view: false
+    defer-datasource-initialization: true
+
+     
 logging:
   level:
     org.hibernate:
@@ -31,5 +28,13 @@ app:
 server:
   tomcat:
     max-http-form-post-size: 5MB
+    
+data.rest:
+   base-path: /api
+   detection-strategy: annotated
+   
+sql.init.mode: always
+
+
     
 thymeleaf3.decoupled-logic: true
