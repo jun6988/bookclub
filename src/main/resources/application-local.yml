@@ -19,3 +19,5 @@ logging:
       type.descriptor.sql.BasicBinder: trace
 app:
   host: http://localhost:8080
+  
+thymeleaf3.decoupled-logic: true

@@ -2,10 +2,10 @@ debug: false
 
 spring:
   datasource:
-    username: testuser
-    password: testpass
-    url: jdbc:postgresql://localhost:5432/testdb
-    driver-class-name: org.postgresql.Driver
+    username: june
+    password: Ipoi1201?
+    url: jdbc:mysql://localhost:3307/board
+    driver-class-name: org.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -31,3 +31,5 @@ app:
 server:
   tomcat:
     max-http-form-post-size: 5MB
+    
+thymeleaf3.decoupled-logic: true

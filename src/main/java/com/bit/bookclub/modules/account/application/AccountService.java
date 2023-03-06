@@ -1,6 +1,7 @@
 package com.bit.bookclub.modules.account.application;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -169,4 +170,12 @@ public class AccountService implements UserDetailsService {
         return Optional.ofNullable(accountRepository.findByNickname(nickname))
                 .orElseThrow(() -> new IllegalArgumentException(nickname + "에 해당하는 사용자가 없습니다."));
     }
+
+    
+//    // 리스트 처리
+//	public List<Account> getAccountList() {
+//		
+//		return accountRepository.findAll();
+//	}
 }
+

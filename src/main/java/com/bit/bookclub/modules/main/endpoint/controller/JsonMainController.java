@@ -44,11 +44,11 @@ public class JsonMainController {
 		}
 		return json;
 	}
-
-//  @GetMapping("/login")
-//  public String login() {
-//    return "login";
-//  }
+//
+  @GetMapping("/login")
+  public String login() {
+    return "login";
+  }
 
 	@GetMapping("/search/json-study")
 	@ResponseBody

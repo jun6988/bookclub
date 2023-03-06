@@ -1,23 +1,31 @@
 package com.bit.bookclub.modules.account.endpoint.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bit.bookclub.modules.account.application.AccountService;
+import com.bit.bookclub.modules.account.domain.UserAccount;
 import com.bit.bookclub.modules.account.domain.entity.Account;
 import com.bit.bookclub.modules.account.endpoint.controller.form.SignUpForm;
 import com.bit.bookclub.modules.account.endpoint.controller.validator.SignUpFormValidator;
 import com.bit.bookclub.modules.account.infra.repository.AccountRepository;
 import com.bit.bookclub.modules.account.support.CurrentUser;
 
-import java.util.HashMap;
-
-import javax.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
@@ -145,4 +153,11 @@ public class JsonAccountController {
         json.put("result", true);
         return json;
     }
+
+    
+//    @GetMapping("/gettest")
+//    public List<Account> getTest(UserAccount userAccount) {
+//    	
+//    	return accountService.getAccountList();
+//    }
 }
