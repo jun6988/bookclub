@@ -3,6 +3,7 @@ package com.bit.bookclub.modules.readingnote.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class BookCategory {
 	private String book_category_name;
 	
 //	BookCategory(1) : Book(N) 설정
-	@OneToMany(mappedBy = "book_category_id")
+	@OneToMany(mappedBy = "book_category_id", fetch = FetchType.EAGER)
 	public List<Book> book;
 	
 }

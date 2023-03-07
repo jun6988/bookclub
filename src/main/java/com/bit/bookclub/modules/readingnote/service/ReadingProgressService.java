@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.bit.bookclub.modules.readingnote.entity.ReadingProgress;
 import com.bit.bookclub.modules.readingnote.repository.ReadingProgressRepository;
@@ -28,6 +29,7 @@ public class ReadingProgressService {
 	}
 	
 	// 작성 처리
+
 	public ReadingProgress registReadingProgress(ReadingProgress readingProgress) {
 		
 		readingProgress.setAttainment_percent(readingProgress.getReading_progress_attainment() * 100 / readingProgress.getReading_progress_goal());

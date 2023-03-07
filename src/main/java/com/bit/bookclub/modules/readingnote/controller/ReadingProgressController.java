@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,13 +23,13 @@ public class ReadingProgressController {
 
 	@Autowired
 	private ReadingProgressService readingProgressService;
-	
+	@CrossOrigin("*")
 	@GetMapping("/list")
 	public List<ReadingProgress> getAllReadingProgress() {
 		
 		return readingProgressService.getReadingProgressList();
 	}
-	
+	@CrossOrigin(origins = "*")
 	@GetMapping("/list/{id}")
 	public Optional<ReadingProgress> getReadingProgressById(@PathVariable("id") Integer id) {
 		

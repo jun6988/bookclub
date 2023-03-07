@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,8 +38,8 @@ public class Article_Comment extends AuditingFields {
     private Long id;
 
     // @ManyToOne = 연관관계 Mapping 
-    @Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "nickname") private Account account; // 유저 정보 (ID)
+    @Setter @ManyToOne(optional = false, fetch = FetchType.EAGER) private Article article; // 게시글 (ID)
+    @Setter @ManyToOne(optional = false, fetch = FetchType.EAGER) @JoinColumn(name = "nickname") private Account account; // 유저 정보 (ID)
 
     @Setter @Column(nullable = false, length = 500) private String content; // 본문
 

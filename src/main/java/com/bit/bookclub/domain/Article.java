@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,7 +43,7 @@ public class Article extends AuditingFields { // AuditingFields 상속으로 내
 
     // @Setter = 도메인에서 수정 가능하도록. 자동으로 바꿔주는 것을 방지.
     // meta data는 JPA가 자동으로 변경 가능하도록 해야하기 때문에 걸어주지 않는다. --> meta data는 JpaConfig로 이동.
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private Account account; // 유저 정보 (ID)
+    @Setter @ManyToOne(optional = false, fetch = FetchType.EAGER) @JoinColumn(name = "accountId") private Account account; // 유저 정보 (ID)
 
     // @Column(nullable = false, length = 10000) - not null 및 길이 설정.
     @Setter @Column(nullable = false) private String title; // 제목
@@ -54,7 +55,7 @@ public class Article extends AuditingFields { // AuditingFields 상속으로 내
     @ToString.Exclude // 댓글로 부터 글을 참조 / 댓글 리스트를 다 뽑아 볼 필요가 없기 때문에 끊어준다 (Article_Comment로 들어갔다가 끊어준다) 
     @OrderBy("createdAt DESC")
     // cascade = 연관관계 있는 것에 영향을 주어야한다. 
-    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL) // Article에 연동되어 있는 댓글들은 중복을 허용하지 않고 모아서 connection으로 보겠다. 
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // Article에 연동되어 있는 댓글들은 중복을 허용하지 않고 모아서 connection으로 보겠다. 
     private final Set<Article_Comment> article_Comments = new LinkedHashSet<>();
 
 

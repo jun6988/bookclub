@@ -25,11 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .mvcMatchers("/", "/login", "/sign-up", "/check-email-token",
+        .antMatchers("/", "/login", "/sign-up", "/check-email-token",
                 "/email-login", "/check-email-login", "/login-link", "/login-by-email", "/search/study").permitAll()
-        .mvcMatchers("/json", "/json-login", "/json-sign-up", "/json-check-email-token",
+        .antMatchers("/json", "/json-login", "/json-sign-up", "/json-check-email-token",
                 "/json-email-login", "/json-check-email-login", "/json-login-link", "/json-login-by-email", "/search/json-study").permitAll()
-        .mvcMatchers(HttpMethod.GET, "/profile/*").permitAll();
+        .antMatchers(HttpMethod.GET, "/profile/*").permitAll();
         // 모든 것에 security 적용 시키는 code
 //        .anyRequest().authenticated();
         http.formLogin()
@@ -53,6 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
         web.ignoring()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-                .mvcMatchers("/node_modules/**");
+                .antMatchers("/node_modules/**");
     }
 }

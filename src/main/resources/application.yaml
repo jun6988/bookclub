@@ -1,4 +1,4 @@
-debug: true
+debug: false
 management.endpoints.web.exposure.include: "*"
 
 spring:
@@ -8,14 +8,18 @@ spring:
     url: jdbc:mysql://localhost:3307/bookclub
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true
         default_batch_fetch_size: 100
     open-in-view: false
     defer-datasource-initialization: true
+    
+
+ 
 
      
 logging:
@@ -23,11 +27,7 @@ logging:
     org.hibernate:
       SQL: debug
       type.descriptor.sql.BasicBinder: trace
-app:
-  host: http://localhost:8080
-server:
-  tomcat:
-    max-http-form-post-size: 5MB
+
     
 data.rest:
    base-path: /api
