@@ -23,9 +23,11 @@ import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
 import org.hibernate.Hibernate;
+import org.springframework.context.annotation.Role;
 
 import com.bit.bookclub.modules.account.endpoint.controller.form.NotificationForm;
 import com.bit.bookclub.modules.tag.domain.entity.Tag;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -37,6 +39,8 @@ import lombok.ToString;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED) @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder @Getter @ToString
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY) // for  a serializer 
 public class Account extends AuditingEntity {
 
     @Id @GeneratedValue
@@ -53,7 +57,7 @@ public class Account extends AuditingEntity {
 
     private String password;
 
-    private boolean isValid;
+    //private boolean isValid;
 
     private String emailToken;
 
@@ -61,8 +65,8 @@ public class Account extends AuditingEntity {
     
     private LocalDate birtday;
     
-    @Column(nullable = false)
-    private String gender;
+   @Column(nullable = true)
+   private String gender;
     
     private Integer age;
     
@@ -99,7 +103,7 @@ public class Account extends AuditingEntity {
     }
 
     public void verified() {
-        this.isValid = true;
+  //      this.isValid = true;
         joinedAt = LocalDateTime.now();
     }
 
@@ -199,4 +203,6 @@ public class Account extends AuditingEntity {
     public static Account of(String nickname, String password, String email) {
     	return new Account(nickname, password, email);
     }
+
+
 }

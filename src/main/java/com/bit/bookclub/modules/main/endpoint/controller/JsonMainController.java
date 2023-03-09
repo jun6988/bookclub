@@ -1,7 +1,5 @@
 package com.bit.bookclub.modules.main.endpoint.controller;
 
-import lombok.RequiredArgsConstructor;
-
 import java.util.HashMap;
 
 import org.springframework.data.domain.Page;
@@ -9,7 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +20,8 @@ import com.bit.bookclub.modules.event.infra.repository.EnrollmentRepository;
 import com.bit.bookclub.modules.study.domain.entity.Study;
 import com.bit.bookclub.modules.study.infra.repository.StudyRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequiredArgsConstructor
 public class JsonMainController {
@@ -29,6 +31,7 @@ public class JsonMainController {
 	private final EnrollmentRepository enrollmentRepository;
 
 	@GetMapping("/json")
+	@CrossOrigin(origins = "*")
 	@ResponseBody
 	public HashMap<String, Object> home(@CurrentUser Account account) {
 		HashMap<String, Object> json = new HashMap<>();
@@ -44,8 +47,10 @@ public class JsonMainController {
 		}
 		return json;
 	}
-//
-  @GetMapping("/login")
+
+// Get에서 Post로 수정 (성준) 
+  @PostMapping("/login")
+
   public String login() {
     return "login";
   }

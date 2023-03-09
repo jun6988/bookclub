@@ -35,20 +35,22 @@ public class UserAccount extends User {
     private String userId;
 
     @Setter @Column(nullable = false) private String password;
-//
+
     @Setter @Column(length = 100) private String email;
     @Setter @Column(length = 100) private String nickname;
-//    
+    
     @Setter @Column private LocalDateTime joinedAt;
     @Setter @Column private LocalDateTime modifiedAt;
     @Setter @Column private String modifiedBy;
     @Setter @Column private String createdBy;
-//
+
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
 
-
+//	@Getter
+//	private final Account account;
+	
     public UserAccount(Account account) {
         super(account.getNickname(), account.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_USER")));
         this.account = account;

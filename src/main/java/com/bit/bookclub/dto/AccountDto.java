@@ -11,7 +11,7 @@ public record AccountDto(
         String nickname,
         String password,
         String email,
-        Boolean isValid,
+        //Boolean isValid,
         String emailToken,
         LocalDateTime joinedAt,
         LocalDate birtday,
@@ -21,21 +21,21 @@ public record AccountDto(
 ) {
 
     public static AccountDto of(String nickname, String password, String email) {
-        return new AccountDto(nickname, password, email, null, null, null, null, null, null, null);
+        return new AccountDto(nickname, password, email, null, null, null, null, null, null); // valid 잠시 주석떄문에 null하나 없음 
     }
 
     public static AccountDto of(
     		String nickname,
             String password,
             String email,
-            Boolean isValid,
+           //boolean isValid,
             String emailToken,
             LocalDateTime joinedAt,
             LocalDate birtday,
             String gender,
             String name,
             Integer age) {
-        return new AccountDto(nickname, password, email, isValid, emailToken, joinedAt, birtday, gender, name, age);
+        return new AccountDto(nickname, password, email, emailToken, joinedAt, birtday, gender, name, age); //is valid빠짐
     }
 
     public static AccountDto from(Account entity) {
@@ -43,7 +43,7 @@ public record AccountDto(
                 entity.getNickname(),
                 entity.getPassword(),
                 entity.getEmail(),
-                entity.isValid(),
+                //entity.isValid(),
                 entity.getEmailToken(),
                 entity.getJoinedAt(),
                 entity.getBirtday(),

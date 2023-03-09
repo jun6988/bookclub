@@ -139,7 +139,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.CrossOrigin;
+//import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -153,7 +154,7 @@ import com.bit.bookclub.domain.constant.SearchType;
 import com.bit.bookclub.dto.Response.ArticleResponse;
 import com.bit.bookclub.dto.Response.ArticleWithCommentsResponse;
 import com.bit.bookclub.dto.request.ArticleRequest;
-import com.bit.bookclub.dto.security.BoardPrincipal;
+//import com.bit.bookclub.dto.security.BoardPrincipal;
 
 // controller는 실질적으로 Data 올려주는 곳 
 
@@ -171,6 +172,7 @@ public class ArticleController {
 
     // 게시글 리스트 페이지 불러오기 
     @GetMapping
+    @CrossOrigin(origins = "*")
     public Page<ArticleResponse> articles(
     		// 검색어를 입력하면 검색기능으로 넘어가게 설정 
             @RequestParam(required = false) SearchType searchType,
@@ -185,12 +187,14 @@ public class ArticleController {
 
     // 게시글 단건 조회 
     @GetMapping("/{articleId}")
+    @CrossOrigin(origins = "*")
     public ArticleWithCommentsResponse article(@PathVariable Long articleId) {
         ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticleWithComments(articleId));
         return article;
     }
 
     @GetMapping("/search-hashtag")
+    @CrossOrigin(origins = "*")
     public Page<ArticleResponse> searchArticleHashtag(
             @RequestParam(required = false) String searchValue,
             @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable
@@ -201,51 +205,27 @@ public class ArticleController {
 
     @PostMapping("/form")
     public void postNewArticle(
-            @AuthenticationPrincipal BoardPrincipal boardPrincipal,
+            //@AuthenticationPrincipal BoardPrincipal boardPrincipal,
             ArticleRequest articleRequest
     ) {
-        articleService.saveArticle(articleRequest.toDto(boardPrincipal.toDto()));
+        articleService.saveArticle(articleRequest.toDto(null));
     }
 
     @PostMapping("/{articleId}/form")
     public void updateArticle(
             @PathVariable Long articleId,
-            @AuthenticationPrincipal BoardPrincipal boardPrincipal,
+            //@AuthenticationPrincipal BoardPrincipal boardPrincipal,
             ArticleRequest articleRequest
     ) {
-        articleService.updateArticle(articleId, articleRequest.toDto(boardPrincipal.toDto()));
+        articleService.updateArticle(articleId, articleRequest.toDto(null));
     }
 
     @PostMapping("/{articleId}/delete")
     public void deleteArticle(
-            @PathVariable Long articleId,
-            @AuthenticationPrincipal BoardPrincipal boardPrincipal
+            @PathVariable Long articleId, String nickname
+            //@AuthenticationPrincipal BoardPrincipal boardPrincipal
     ) {
-        articleService.deleteArticle(articleId, boardPrincipal.getName());
+        articleService.deleteArticle(articleId, nickname);
     }
 }
 
-// ArticleControllerTest 보면서 controller 작성 
-
-//@RequiredArgsConstructor
-//@RequestMapping("/articles")
-//@Controller
-//public class ArticleController {
-
-//private final ArticleService articleService;
-//	
-//	@GetMapping
-//	public String articles(ModelMap map) {
-//		map.addAttribute("articles", List.of());
-//		
-//		return "articles/index";
-//		
-//  <게시글 상세 페이지>
-//	@GetMapping("/{articleId}") 경로 = 게시물ID 값 
-//	public String article(@PathVariable Long articleId, ModelMap map) {
-//		map.addAttribute("article", null); 게시물 
-//		map.addAttribute("article_Comments", List.of()); 게시물의 댓글(리스트 형식으로 받는다) 
-//
-//		return "articles/detail"; // detail.html, detail.th.xml 만들어 주기 (오른쪽 사이드 바 & 네비게이션 바)  
-//	}
-//}

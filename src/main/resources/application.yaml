@@ -1,24 +1,45 @@
-debug: false
-management.endpoints.web.exposure.include: "*"
+#debug: false
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+
 
 spring:
+  security:
+    user:
+      password: none
+      
+  jackson:
+    FAIL_ON_EMPTY_BEANS: false
   datasource:
     username: bookclub
     password: bookclub
     url: jdbc:mysql://localhost:3307/bookclub
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    generate-ddl: true
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        format_sql: true
-        default_batch_fetch_size: 100
-    open-in-view: false
-    defer-datasource-initialization: true
-    
 
+  hibernate:
+      ddl-auto: create-drop
+      properties:
+      hibernate:
+      format_sql: true
+      default_batch_fetch_size: 100
+      open-in-view: false
+      defer-datasource-initialization: true
+      
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: junnyda1004@gmail.com
+    password: mgah bqez yqnm odvy 
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.timeout: 5000
+      mail.smtp.starttls.enable: true
  
 
      
@@ -27,6 +48,7 @@ logging:
     org.hibernate:
       SQL: debug
       type.descriptor.sql.BasicBinder: trace
+    org.springframework.security : debug
 
     
 data.rest:
@@ -38,3 +60,4 @@ sql.init.mode: always
 
     
 thymeleaf3.decoupled-logic: true
+
